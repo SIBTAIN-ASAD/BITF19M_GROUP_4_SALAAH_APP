@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fajar"
+        android:textSize="20sp"/>
+
+    <CheckBox
+        android:id="@+id/fajar_offer_prayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Offer Prayer"/>
+
+    <CheckBox
+        android:id="@+id/fajar_with_jamaat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="With Jamaat"/>
+
+    <Spinner
+        android:id="@+id/fajar_rakat_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zohar"
+        android:textSize="20sp"/>
+
+    <CheckBox
+        android:id="@+id/zohar_offer_prayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Offer Prayer"/>
+
+    <CheckBox
+        android:id="@+id/zohar_with_jamaat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="With Jamaat"/>
+
+    <Spinner
+        android:id="@+id/zohar_rakat_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Asar"
+        android:textSize="20sp"/>
+
+    <CheckBox
+        android:id="@+id/asar_offer_prayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Offer Prayer"/>
+
+    <CheckBox
+        android:id="@+id/asar_with_jamaat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="With Jamaat"/>
+
+    <Spinner
+        android:id="@+id/asar_rakat_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Maghrib"
+        android:textSize="20sp"/>
+
+    <CheckBox
+        android:id="@+id/maghrib_offer_prayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Offer Prayer"/>
+
+    <CheckBox
+        android:id="@+id/maghrib_with_jamaat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="With Jamaat"/>
+
+    <Spinner
+        android:id="@+id/maghrib_rakat_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Isha"
+        android:textSize="20sp"/>
+
+    <CheckBox
+        android:id="@+id/isha_offer_prayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Offer Prayer"/>
+
+    <CheckBox
+        android:id="@+id/isha_with_jamaat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="With Jamaat"/>
+
+    <Spinner
+        android:id="@+id/isha_rakat_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
