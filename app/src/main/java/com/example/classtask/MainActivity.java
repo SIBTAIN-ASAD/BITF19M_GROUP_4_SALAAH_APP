@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner ishaRakatSpinner;
 
     private ArrayList<Salaah> prayers = new ArrayList<>();
+    private ArrayList<Integer> rakaatArr = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,15 +63,15 @@ public class MainActivity extends AppCompatActivity {
         ishaWithJamaatCheckBox = findViewById(R.id.isha_with_jamaat);
         ishaRakatSpinner = findViewById(R.id.isha_rakat_spinner);
 
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-//                R.array.rakat_options, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//
-//        fajarRakatSpinner.setAdapter(adapter);
-//        zoharRakatSpinner.setAdapter(adapter);
-//        asarRakatSpinner.setAdapter(adapter);
-//        maghribRakatSpinner.setAdapter(adapter);
-//        ishaRakatSpinner.setAdapter(adapter);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.rakaat_array,
+               android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        fajarRakatSpinner.setAdapter(adapter);
+        zoharRakatSpinner.setAdapter(adapter);
+        asarRakatSpinner.setAdapter(adapter);
+        maghribRakatSpinner.setAdapter(adapter);
+        ishaRakatSpinner.setAdapter(adapter);
     }
 
     private void saveData() {
