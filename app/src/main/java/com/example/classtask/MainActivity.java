@@ -1,5 +1,7 @@
 package com.example.classtask;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     public Button sav;
     public Button pre;
     public Button nxt;
+    public Button repo;
+    public Button clear;
     public TextView txtDate;
 
     private ArrayList<PrayerData> prayers = new ArrayList<>();
@@ -59,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         sav = findViewById(R.id.savebtn);
         pre = findViewById(R.id.prebtn);
         nxt = findViewById(R.id.nextbtn);
+        repo = findViewById(R.id.repobtn);
+        clear = findViewById(R.id.clearbtn);
         txtDate = findViewById(R.id.mydate);
 
         fajarOfferPrayerCheckBox = findViewById(R.id.fajar_offer_prayer);
@@ -173,7 +179,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // click listner for clear button
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String Date1 = txtDate.getText().toString();
+               setAttributes(-1);
+               txtDate.setText(Date1);
+            }
+        });
 
+            // click listner for repo button
+            repo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "https://github.com/SIBTAIN-ASAD/BITF19M_GROUP_4_SALAAH_APP";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
     }
 
     public static String getNextDate(String  curDate) throws ParseException {
