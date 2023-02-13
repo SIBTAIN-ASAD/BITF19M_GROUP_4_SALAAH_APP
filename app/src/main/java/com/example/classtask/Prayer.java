@@ -47,7 +47,7 @@ public class Prayer {
 
 
     public int getRakats() {
-        return Integer.parseInt(rakats);
+        return (Integer.parseInt(rakats)-1);
     }
 
 
