@@ -5,6 +5,19 @@ public class PrayerData {
     private Prayer fajar, zohar, asar, maghrib, isha;
     public boolean tahajjud;
 
+    public PrayerData()
+    {
+        this.date = "0/0/0";
+        fajar = new Prayer();
+        zohar = new Prayer();
+        asar = new Prayer();
+        maghrib = new Prayer();
+        isha = new Prayer();
+        tahajjud = false;
+    }
+
+
+
     public PrayerData(String date, Prayer fajar, Prayer zohar, Prayer asar, Prayer maghrib, Prayer isha,boolean tahajjud) {
         this.date = date;
         this.fajar = fajar;
@@ -77,28 +90,6 @@ public class PrayerData {
                 break;
             case "Isha":
                 isha.setWithJamaat(withJamaat);
-                break;
-            default:
-                break;
-        }
-    }
-
-    public void setRakat(String salaahName, int rakats) {
-        switch (salaahName) {
-            case "Fajar":
-                fajar.setRakats(rakats);
-                break;
-            case "Zohar":
-                zohar.setRakats(rakats);
-                break;
-            case "Asar":
-                asar.setRakats(rakats);
-                break;
-            case "Maghrib":
-                maghrib.setRakats(rakats);
-                break;
-            case "Isha":
-                isha.setRakats(rakats);
                 break;
             default:
                 break;

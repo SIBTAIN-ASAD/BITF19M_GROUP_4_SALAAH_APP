@@ -5,8 +5,7 @@ public class Prayer {
     private String name;
     private boolean isOffered;
     private boolean isWithJamaat;
-    private int rakats;
-    private String rakat;
+    private String rakats;
 
     public Prayer(String name) {
         this.name = name;
@@ -14,10 +13,13 @@ public class Prayer {
 
     public Prayer()
     {
-
+        name = "";
+        isOffered = false;
+        isWithJamaat = false;
+        rakats = "1";
     }
 
-    public Prayer(boolean isoff, boolean isjmt, int rakats)
+    public Prayer(boolean isoff, boolean isjmt, String rakats)
     {
         this.isOffered = isoff;
         this.isWithJamaat = isjmt;
@@ -45,7 +47,7 @@ public class Prayer {
 
 
     public int getRakats() {
-        return rakats;
+        return Integer.parseInt(rakats);
     }
 
 
@@ -57,12 +59,7 @@ public class Prayer {
         this.isWithJamaat = isWithJamaat;
     }
 
-
     public void setRakat(String rakats) {
-        this.rakat = rakats;
-    }
-
-    public void setRakats(int rakats) {
         this.rakats = rakats;
     }
 }

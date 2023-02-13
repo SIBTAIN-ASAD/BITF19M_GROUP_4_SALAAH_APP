@@ -1,6 +1,7 @@
 package com.example.classtask;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import androidx.collection.ArraySet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
@@ -92,14 +94,15 @@ public class MainActivity extends AppCompatActivity {
         ishaRakatSpinner.setAdapter(adapter);
 
         // Add a dummay Data
-        Prayer f = new Prayer(true, true, 2);
-        Prayer z = new Prayer(true, true, 4);
-        Prayer a = new Prayer(false, true, 4);
-        Prayer m = new Prayer(true, true, 3);
-        Prayer i = new Prayer(true, false, 6);
+        Prayer f = new Prayer(true, true, "2");
+        Prayer z = new Prayer(true, true, "4");
+        Prayer a = new Prayer(false, true, "4");
+        Prayer m = new Prayer(true, true, "3");
+        Prayer i = new Prayer(true, false, "6");
 
 //        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String Date1 = "12/2/2023";
+
 //        try {
 //            sdf.parse(Date1);
 //        } catch (ParseException e) {
@@ -112,17 +115,127 @@ public class MainActivity extends AppCompatActivity {
         prayers.add(temp);
         setAttributes(0);
 
+
+        // click listner for save button
         sav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveData();
+                try {
+                    saveData();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
+
+
+        // click listner for next button
+        nxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String Date1 = txtDate.getText().toString();
+                String Date2 = null;
+                try {
+                    Date2 = getNextDate(Date1);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                int i = 0;
+                try {
+                    i = getIndex(Date2);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                setAttributes(i);
+                txtDate.setText(Date2);
+            }
+        });
+
+        // click listner for previous button
+        pre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String Date1 = txtDate.getText().toString();
+                String Date2 = null;
+                try {
+                    Date2 = getPreDate(Date1);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                int i = 0;
+                try {
+                    i = getIndex(Date2);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                setAttributes(i);
+                txtDate.setText(Date2);
+            }
+        });
+
+
     }
+
+    public static String getNextDate(String  curDate) throws ParseException {
+        final SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+        final Date date = format.parse(curDate);
+        final Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+        return format.format(calendar.getTime());
+    }
+
+
+    public static String getPreDate(String  curDate) throws ParseException {
+        final SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+        final Date date = format.parse(curDate);
+        final Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        return format.format(calendar.getTime());
+    }
+
+    public boolean comapreDates(String D1, String D2) throws ParseException {
+        SimpleDateFormat sdformat = new SimpleDateFormat("dd/mm/yyyy");
+        Date d1 = sdformat.parse(D1);
+        Date d2 = sdformat.parse(D2);
+        if(d1.compareTo(d2) > 0) {
+            return false;
+        } else if(d1.compareTo(d2) < 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
+
+    private int getIndex(String date) throws ParseException {
+        for(int i = 0; i < prayers.size(); i++)
+        {
+            Log.d("Index: ","->> "+ date + " " + prayers.get(i).date + " " + String.valueOf(i));
+            if (comapreDates(prayers.get(i).date,date) == true)
+            {
+                return i;
+            }
+        }
+        Log.d("Index: ","->> "+ date + String.valueOf(-1));
+        return -1;
+    }
+
 
     private void setAttributes(int i)
     {
-        PrayerData curr = prayers.get(i);
+
+        PrayerData curr;
+        if (i == -1)
+        {
+            curr = new PrayerData();
+        }
+        else
+        {
+            curr = prayers.get(i);
+        }
 
         fajarOfferPrayerCheckBox.setChecked(curr.getFajar().isOffered());
         fajarWithJamaatCheckBox.setChecked(curr.getFajar().isWithJamaat());
@@ -151,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void saveData() {
+    private void saveData() throws ParseException {
         Prayer fajar = new Prayer();
         fajar.setOfferPrayer(fajarOfferPrayerCheckBox.isChecked());
         fajar.setWithJamaat(fajarWithJamaatCheckBox.isChecked());
@@ -179,38 +292,22 @@ public class MainActivity extends AppCompatActivity {
 
 
         // SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        String Date1 = "12/2/2023";
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-
-        try {
-            sdf.parse(Date1);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        String date = sdf.format(new Date());
+        String Date1 = txtDate.getText().toString();
 
         boolean tjd = tahajjud.isChecked();
 
-        PrayerData prayerData = new PrayerData(date, fajar, zohar, asar, maghrib, isha, tjd);
+        PrayerData prayerData = new PrayerData(Date1, fajar, zohar, asar, maghrib, isha, tjd);
 
-        boolean found = false;
-        // store at specific location
-        for(int i = 0; i < prayers.size(); i++)
-        {
-            if (prayers.get(i).date == date)
-            {
-                prayers.set(i, prayerData);
-                found = true;
-            }
-        }
+        int ind = getIndex(Date1);
 
-        if(found == false)
+        if(ind == -1)
         {
             prayers.add(prayerData);
         }
-
+        else
+        {
+            prayers.set(ind, prayerData);
+        }
     }
 }
 
