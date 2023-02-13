@@ -17,6 +17,14 @@ public class Prayer {
 
     }
 
+    public Prayer(boolean isoff, boolean isjmt, int rakats)
+    {
+        this.isOffered = isoff;
+        this.isWithJamaat = isjmt;
+        this.rakats = rakats;
+    }
+
+
 
     public String getName() {
         return name;

@@ -20,6 +20,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/mydate"
         android:layout_marginBottom="15dp"
         android:padding="10dp"
         android:text="13/02/2022"
@@ -235,6 +236,7 @@
         android:layout_height="match_parent">
 
         <Button
+            android:id="@+id/prebtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
@@ -244,6 +246,7 @@
             style="?android:attr/buttonBarButtonStyle" />
 
         <Button
+            android:id="@+id/savebtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -254,6 +257,7 @@
             style="?android:attr/buttonBarButtonStyle" />
 
         <Button
+            android:id="@+id/nextbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

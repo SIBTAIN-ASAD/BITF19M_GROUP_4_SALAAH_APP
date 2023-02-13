@@ -1,16 +1,18 @@
 package com.example.classtask;
 
 public class PrayerData {
-    private String date;
+    public String date;
     private Prayer fajar, zohar, asar, maghrib, isha;
+    public boolean tahajjud;
 
-    public PrayerData(String date, Prayer fajar, Prayer zohar, Prayer asar, Prayer maghrib, Prayer isha) {
+    public PrayerData(String date, Prayer fajar, Prayer zohar, Prayer asar, Prayer maghrib, Prayer isha,boolean tahajjud) {
         this.date = date;
         this.fajar = fajar;
         this.zohar = zohar;
         this.asar = asar;
         this.maghrib = maghrib;
         this.isha = isha;
+        this.tahajjud = tahajjud;
     }
 
     public String getDate() {
